@@ -23,18 +23,17 @@ screen_size = rows * columns
 x_offset = columns / 2
 y_offset = rows / 2
 
-# rotating animation
+
 A, B = 0, 0
 
 spacing1 = 10
 spacing2 = 2
 
-chars = "101010101010"  # luminance index
+chars = "101010101010"  
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
-# display_surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption('Donut')
 font = pygame.font.SysFont('Arial', 18, bold=True)
 
@@ -53,11 +52,11 @@ while run:
 
     screen.fill((black))
 
-    z = [0] * screen_size  # Donut. Fills donut space
-    b = [' '] * screen_size  # Background. Fills empty space
+    z = [0] * screen_size  
+    b = [' '] * screen_size  
 
-    for j in range(0, 628, spacing1):  # from 0 to 2pi
-        for i in range(0, 628, spacing2):  # from 0 to 2pi
+    for j in range(0, 628, spacing1): 
+        for i in range(0, 628, spacing2): 
             c = math.sin(i)
             d = math.cos(j)
             e = math.sin(A)
@@ -69,9 +68,9 @@ while run:
             m = math.cos(B)
             n = math.sin(B)
             t = c * h * g - f * e
-            # 3D x coordinate after rotation
+    
             x = int(x_offset + 40 * D * (l * h * m - t * n))
-            # 3D y coordinate after rotation
+          
             y = int(y_offset + 20 * D * (l * h * n + t * m))
             o = int(x + columns * y)
             N = int(8 * ((f * e - c * d * g) * m - c * d *
@@ -84,8 +83,8 @@ while run:
         y_start = 0
 
     for i in range(len(b)):
-        A += 0.00001  # for faster rotation change to bigger value
-        B += 0.000002  # for faster rotation change to bigger value
+        A += 0.00001  
+        B += 0.000002 
         if i == 0 or i % columns:
             text_display(b[i], x_start, y_start)
             x_start += x_separator
